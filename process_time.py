@@ -1,7 +1,3 @@
-#rclone copy -P --transfers 1 ftpcm:90185 /home/akshay/Downloads/FTP_CM_FO_FILES/CM90185/
-#rclone copy -P --transfers 1 ftpfo:FaoFtp/F90185 /home/akshay/Downloads/FTP_CM_FO_FILES/FO90185/
-#rclone -v copy /home/akshay/Downloads/FTP_CM_FO_FILES/ spaces:cleanluffy/NSEFTP/   
-
 import subprocess
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -26,15 +22,15 @@ def sendmail(sender_address,receiver_address,subject,mail,sender_pass):
 
 #try:
 st = time.time()
-subprocess.call(['sh', '/home/akshay/Cron_scripts/nse_ftp_rclone_script'])
+subprocess.call(['sh', '<path to the bash script doing the work'])
 et = time.time()
 elapsed_time = et - st
 #x=subprocess.check_call(['sh', './nse_ftp_rclone_script',check==True])
 print("               ")
 print(elapsed_time)
 if elapsed_time<300:
- sendmail("emailprojectd@gmail.com","aashish@clopen-research.com","FTP TRANSFER STATUS","LOGIN ERROR ENCOUNTERED","qinrzvmhfusnwzyw")
- sendmail("emailprojectd@gmail.com","akshay.dixit@clopen-research.com","FTP TRANSFER STATUS","LOGIN ERROR ENCOUNTERED","qinrzvmhfusnwzyw")
+ sendmail("<sender id>","<reciever id>","FTP TRANSFER STATUS","LOGIN ERROR ENCOUNTERED","<sneder pass>")
+ sendmail("<sneder id>","<reciever id>","FTP TRANSFER STATUS","LOGIN ERROR ENCOUNTERED","<senser pass>")
 else:
- sendmail("emailprojectd@gmail.com","akshay.dixit@clopen-research.com","FTP TRANSFER STATUS","FTP TRANSFER SUCCESSFUL","qinrzvmhfusnwzyw")
- sendmail("emailprojectd@gmail.com","aashish@clopen-research.com","FTP TRANSFER STATUS","FTP TRANSFER SUCCESSFUL","qinrzvmhfusnwzyw")
+ sendmail("<sneder id>","<reciever id>","FTP TRANSFER STATUS","FTP TRANSFER SUCCESSFUL","<senser pass>")
+ sendmail("<sneder id>","<reciever id>","FTP TRANSFER STATUS","FTP TRANSFER SUCCESSFUL","<senser pass>")
